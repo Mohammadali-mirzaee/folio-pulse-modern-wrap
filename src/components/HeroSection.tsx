@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { ArrowDown } from 'lucide-react';
 
@@ -18,14 +17,16 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden">
-      {/* Video Background */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-charcoal z-10"></div>
-        {/* Fallback image (shows while video loads) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-charcoal z-10"></div>
         <div className="absolute inset-0 bg-charcoal bg-opacity-90"></div>
-        
-        {/* We're using a placeholder div since we don't have actual video */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYxMjR8MHwxfGFsbHx8fHx8fHx8fHwxNjkzMzAzNTk2fA&ixlib=rb-4.0.3&q=80&w=1920')] bg-cover bg-center animate-fade-in"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-fade-in"
+          style={{ 
+            backgroundImage: `url('https://images.unsplash.com/photo-1619417602952-f8b56d608c9e?auto=format&fit=crop&w=2000&q=80')`,
+          }}
+        ></div>
       </div>
 
       {/* Content */}

@@ -1,37 +1,35 @@
-
 import { useRef, useState } from 'react';
 
-// Sample portfolio items - in a real project, these would be fetched from a database or CMS
 const portfolioItems = [
   {
     id: 1,
     title: "Matte Black Wrap",
-    imageUrl: "https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYxMjR8MHwxfGFsbHx8fHx8fHx8fHwxNjkzMzAzNTk2fA&ixlib=rb-4.0.3&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 2,
     title: "Gloss White Transformation",
-    imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYxMjR8MHwxfHNlYXJjaHwzfHxjYXIlMjB3cmFwfGVufDB8fHx8MTY5MzMwMzg3NXww&ixlib=rb-4.0.3&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 3,
     title: "Chrome Delete Package",
-    imageUrl: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYxMjR8MHwxfHNlYXJjaHw0fHxjYXIlMjB3cmFwfGVufDB8fHx8MTY5MzMwMzg3NXww&ixlib=rb-4.0.3&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 4,
     title: "Performance Window Tint",
-    imageUrl: "https://images.unsplash.com/photo-1487887235947-a955ef187fcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYxMjR8MHwxfHNlYXJjaHw2fHxjYXIlMjB3cmFwfGVufDB8fHx8MTY5MzMwMzg3NXww&ixlib=rb-4.0.3&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 5,
     title: "Satin PPF Installation",
-    imageUrl: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYxMjR8MHwxfGFsbHx8fHx8fHx8fHwxNjkzMzAzNTk2fA&ixlib=rb-4.0.3&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 6,
     title: "Custom Livery Design",
-    imageUrl: "https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYxMjR8MHwxfGFsbHx8fHx8fHx8fHwxNjkzMzAzNTk2fA&ixlib=rb-4.0.3&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
