@@ -18,15 +18,15 @@ const HeroSection = () => {
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-charcoal z-10"></div>
-        <div className="absolute inset-0 bg-charcoal bg-opacity-90"></div>
+      <div className="absolute inset-0">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-fade-in"
           style={{ 
             backgroundImage: `url('https://images.unsplash.com/photo-1619417602952-f8b56d608c9e?auto=format&fit=crop&w=2000&q=80')`,
+            zIndex: 0
           }}
         ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-charcoal z-10"></div>
       </div>
 
       {/* Content */}
