@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { ArrowDown } from 'lucide-react';
 
@@ -19,18 +20,17 @@ const HeroSection = () => {
     <section id="hero" className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-fade-in"
-          style={{ 
-            backgroundImage: `url('https://images.unsplash.com/photo-1619417602952-f8b56d608c9e?auto=format&fit=crop&w=2000&q=80')`,
-            zIndex: 0
-          }}
-        ></div>
+        <img 
+          src="https://images.unsplash.com/photo-1619417602952-f8b56d608c9e?auto=format&fit=crop&w=2000&q=80"
+          alt="Hero background" 
+          className="w-full h-full object-cover animate-fade-in"
+          style={{ zIndex: 0 }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-charcoal z-10"></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col h-full justify-center items-center px-4 text-center">
+      <div className="relative z-20 flex flex-col h-full justify-center items-center px-4 text-center">
         <h1 
           className={`text-4xl md:text-6xl lg:text-7xl font-poppins font-extrabold tracking-tight mb-4 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} transition-all duration-1000 ease-out`}
         >
@@ -50,7 +50,7 @@ const HeroSection = () => {
       </div>
       
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
         <ArrowDown size={24} className="text-white/70" />
       </div>
     </section>
