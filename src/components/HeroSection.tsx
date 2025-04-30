@@ -21,12 +21,12 @@ const HeroSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src="https://images.unsplash.com/photo-1619417602952-f8b56d608c9e?auto=format&fit=crop&w=2000&q=80"
-          alt="Hero background" 
-          className="w-full h-full object-cover animate-fade-in"
+          src="/lovable-uploads/e080fb02-ab62-4903-8ad4-cd00860e61b2.png"
+          alt="Stylish car silhouette" 
+          className="w-full h-full object-cover object-center animate-fade-in"
           style={{ zIndex: 0 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-charcoal z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-charcoal z-10"></div>
       </div>
 
       {/* Content */}
