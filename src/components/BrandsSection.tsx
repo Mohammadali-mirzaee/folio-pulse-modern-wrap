@@ -6,12 +6,11 @@ const BrandsSection = () => {
 
   // Brands data with their logos and names
   const brands = [
-    { name: "3M", logo: "/brands/3m-logo.png" },
-    { name: "Global Window Films", logo: "/brands/global-window-films-logo.png" },
-    { name: "Avery Dennison", logo: "/brands/avery-dennison-logo.png" },
-    { name: "Easy Composites", logo: "/brands/easy-composites-logo.png" },
-    { name: "KPMF", logo: "/brands/kpmf-logo.png" },
-    { name: "NKODA", logo: "/brands/nkoda-logo.png" },
+    { name: "Avery Dennison", logo: "/lovable-uploads/655406e7-f6a8-4d3c-95d2-7d7f47025c5b.png" },
+    { name: "Easy Composites", logo: "/lovable-uploads/21cd8acf-ad9a-4534-8593-a6163e0b3d60.png" },
+    { name: "Global Window Films", logo: "/lovable-uploads/40bc5eec-c0b8-48be-87fc-339d242c9cc9.png" },
+    { name: "KPMF", logo: "/lovable-uploads/368d2a61-0bf8-45ae-b963-5b8952aa426e.png" },
+    { name: "NKODA", logo: "/lovable-uploads/d857375b-8966-4624-adc4-a2e3e447386b.png" },
   ];
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const BrandsSection = () => {
           Brands We Trust
         </h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12">
           {brands.map((brand, index) => (
             <div 
               key={index} 
