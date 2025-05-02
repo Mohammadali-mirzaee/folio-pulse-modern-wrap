@@ -59,7 +59,7 @@ const BrandsSection = () => {
                 <img 
                   src={brand.logo} 
                   alt={`${brand.name} logo`} 
-                  className="max-h-12 max-w-full object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  className="max-h-12 max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
             </div>
