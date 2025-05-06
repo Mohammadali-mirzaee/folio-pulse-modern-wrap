@@ -4,15 +4,6 @@ import { useEffect, useRef } from "react";
 const BrandsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Brands data with their logos and names
-  const brands = [
-    { name: "Avery Dennison", logo: "/brands/AVERY_DENNISON.png" },
-    { name: "Easy Composites", logo: "/brands/EASY_COMPOSITES.png" },
-    { name: "Global Window Films", logo: "/brands/GLOBAL.png" },
-    { name: "KPMF", logo: "/brands/KPMF.png" },
-    { name: "NKODA", logo: "/brands/NKODA.png" },
-  ];
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -51,22 +42,14 @@ const BrandsSection = () => {
           Brands We Trust
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12">
-          {brands.map((brand, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-center opacity-0 reveal-brand"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="bg-white/5 hover:bg-white/10 p-6 rounded-lg w-full h-36 flex items-center justify-center transition-all duration-300 transform hover:scale-105">
-                <img
-                  src={brand.logo}
-                  alt={`${brand.name} logo`}
-                  className="max-h-20 max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
-            </div>
-          ))}
+        <div className="flex justify-center opacity-0 reveal-brand">
+          <div className="bg-white/5 hover:bg-white/10 p-6 rounded-lg w-full max-w-4xl flex items-center justify-center transition-all duration-300 transform hover:scale-105">
+            <img
+              src="/lovable-uploads/dc5353f9-deb6-4e3f-b02b-046f7f61b23e.png"
+              alt="Brands we trust - combined logos"
+              className="w-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+            />
+          </div>
         </div>
       </div>
     </section>
