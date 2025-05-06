@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from "react";
 
 const BrandsSection = () => {
@@ -45,7 +44,7 @@ const BrandsSection = () => {
         <div className="flex justify-center opacity-0 reveal-brand">
           <div className="bg-white/5 hover:bg-white/10 p-6 rounded-lg w-full max-w-4xl flex items-center justify-center transition-all duration-300 transform hover:scale-105">
             <img
-              src="/lovable-uploads/dc5353f9-deb6-4e3f-b02b-046f7f61b23e.png"
+              src="/brands/brands.jpg"
               alt="Brands we trust - combined logos"
               className="w-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
             />
