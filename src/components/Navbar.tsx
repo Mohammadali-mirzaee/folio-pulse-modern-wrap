@@ -7,7 +7,11 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    // Prevent body scrolling when menu is open
+    document.body.style.overflow = !isOpen ? 'hidden' : '';
+  };
   
   useEffect(() => {
     const handleScroll = () => {
@@ -21,16 +25,37 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      // Reset body overflow when component unmounts
+      document.body.style.overflow = '';
     };
   }, []);
+
+  // Clean up body overflow when menu closes
+  useEffect(() => {
+    return () => {
+      if (isOpen) {
+        document.body.style.overflow = '';
+      }
+    };
+  }, [isOpen]);
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
       setIsOpen(false);
+      // Re-enable scrolling when navigating
+      document.body.style.overflow = '';
     }
   };
+
+  const navigationItems = [
+    { name: 'Home', id: 'hero' },
+    { name: 'About', id: 'about' },
+    { name: 'Services', id: 'services' },
+    { name: 'Portfolio', id: 'portfolio' },
+    { name: 'Contact', id: 'contact' }
+  ];
 
   return (
     <nav 
@@ -48,19 +73,14 @@ const Navbar = () => {
         <button 
           className="block md:hidden text-white"
           onClick={toggleMenu}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8">
-          {[
-            { name: 'Home', id: 'hero' },
-            { name: 'About', id: 'about' },
-            { name: 'Services', id: 'services' },
-            { name: 'Portfolio', id: 'portfolio' },
-            { name: 'Contact', id: 'contact' }
-          ].map((item) => (
+          {navigationItems.map((item) => (
             <button 
               key={item.id}
               className="text-white/80 hover:text-accent transition-colors duration-300"
@@ -72,29 +92,28 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={cn(
-        "fixed inset-0 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center transition-all duration-300 md:hidden",
-        isOpen ? "opacity-100 z-40" : "opacity-0 -z-10"
-      )}>
-        <div className="flex flex-col items-center space-y-8">
-          {[
-            { name: 'Home', id: 'hero' },
-            { name: 'About', id: 'about' },
-            { name: 'Services', id: 'services' },
-            { name: 'Portfolio', id: 'portfolio' },
-            { name: 'Contact', id: 'contact' }
-          ].map((item) => (
-            <button 
-              key={item.id}
-              className="text-2xl text-white/90 hover:text-accent transition-colors duration-300"
-              onClick={() => scrollToSection(item.id)}
-            >
-              {item.name}
-            </button>
-          ))}
+      {/* Mobile Menu - Refactored */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/95 backdrop-blur-lg z-40 flex flex-col items-center justify-center md:hidden animate-fade-in"
+          onClick={() => toggleMenu()} // Close menu when background is clicked
+        >
+          <div 
+            className="flex flex-col items-center space-y-8 animate-fade-up"
+            onClick={(e) => e.stopPropagation()} // Prevent clicks on menu items from closing the menu
+          >
+            {navigationItems.map((item) => (
+              <button 
+                key={item.id}
+                className="text-2xl text-white/90 hover:text-accent transition-colors duration-300"
+                onClick={() => scrollToSection(item.id)}
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };
