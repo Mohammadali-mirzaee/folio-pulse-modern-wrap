@@ -74,7 +74,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div className={cn(
-        "fixed inset-0 bg-black flex flex-col items-center justify-center transition-all duration-300 md:hidden",
+        "fixed inset-0 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center transition-all duration-300 md:hidden",
         isOpen ? "opacity-100 z-40" : "opacity-0 -z-10"
       )}>
         <div className="flex flex-col items-center space-y-8">
