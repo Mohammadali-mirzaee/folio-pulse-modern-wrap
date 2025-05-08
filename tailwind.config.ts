@@ -30,7 +30,7 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				charcoal: '#1B1B1B',
-				accent: '#0EA5E9',
+				accent: '#0369A1', // Changed from #0EA5E9 to a darker blue
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
