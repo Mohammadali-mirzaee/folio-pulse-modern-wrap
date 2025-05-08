@@ -44,6 +44,11 @@
     @apply bg-charcoal text-white font-roboto antialiased overflow-x-hidden;
   }
 
+  /* Add menu-open class to prevent background scrolling and movement */
+  body.menu-open {
+    @apply fixed inset-0 w-full;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-poppins font-bold;
   }
@@ -66,7 +71,7 @@
   }
 
   .animate-fade-in {
-    animation: fade-in 1.5s ease-out forwards;
+    animation: fade-in 0.4s ease-out forwards;
   }
   
   @keyframes fade-up {
@@ -75,6 +80,6 @@
   }
 
   .animate-fade-up {
-    animation: fade-up 0.8s ease-out forwards;
+    animation: fade-up 0.5s ease-out forwards;
   }
 }
