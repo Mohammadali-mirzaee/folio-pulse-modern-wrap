@@ -88,7 +88,7 @@ const ContactSection = () => {
                 
                 <button 
                   type="submit"
-                  className="bg-accent hover:bg-accent/80 text-white py-3 px-6 w-full rounded transition-all duration-300 flex items-center justify-center font-medium"
+                  className="bg-white text-charcoal py-3 px-6 w-full rounded-[4px] transition-all duration-300 flex items-center justify-center font-medium hover:bg-white/90"
                 >
                   <Send size={18} className="mr-2" /> Skicka Meddelande
                 </button>
@@ -111,6 +111,33 @@ const ContactSection = () => {
                   >
                     <div className="bg-accent/10 p-3 rounded-full group-hover:bg-accent/20 transition-colors">
                       <Instagram size={24} className="text-accent" />
+                    </div>
+                    <span className="text-white/80 group-hover:text-accent transition-colors">@eliasfoliering</span>
+                  </a>
+                </div>
+                
+                <div className="flex items-center space-x-6">
+                  <a 
+                    href="https://tiktok.com/@eliasfoliering" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 group"
+                  >
+                    <div className="bg-accent/10 p-3 rounded-full group-hover:bg-accent/20 transition-colors">
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="24" 
+                        height="24" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        className="text-accent"
+                      >
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                      </svg>
                     </div>
                     <span className="text-white/80 group-hover:text-accent transition-colors">@eliasfoliering</span>
                   </a>
