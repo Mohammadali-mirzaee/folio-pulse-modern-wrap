@@ -1,7 +1,5 @@
-
 import { useState, useEffect, useRef } from "react";
 import { ArrowDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -10,7 +8,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     setIsLoaded(true);
-    
+
     const handleScroll = () => {
       if (heroRef.current) {
         const scrollPosition = window.scrollY;
@@ -30,13 +28,13 @@ const HeroSection = () => {
   };
 
   return (
-    <section 
-      id="hero" 
+    <section
+      id="hero"
       ref={heroRef}
       className="relative h-screen w-full overflow-hidden"
     >
       {/* Background Image with Parallax */}
-      <div 
+      <div
         className="absolute inset-0"
         style={{ transform: `translateY(${scrollY}px)` }}
       >
@@ -67,14 +65,8 @@ const HeroSection = () => {
         >
           Bilstyling. Precision. Passion.
         </p>
-        
-        <Button 
-          onClick={scrollToContact}
-          variant="outline"
-          className="bg-white text-charcoal hover:bg-white/90 border-none font-medium text-base py-6 px-8 rounded-sm transition-all duration-300 transform hover:scale-105 animate-pulse"
-        >
-          Kontakta Oss
-        </Button>
+
+        <button onClick={scrollToContact}>Kontakta Oss</button>
       </div>
 
       {/* Scroll Indicator */}
