@@ -1,27 +1,28 @@
+
 import { useRef, useState } from "react";
 
 const portfolioItems = [
   {
     id: 1,
-    title: "Matte Black Wrap",
+    title: "Matt Svart Foliering",
     imageUrl:
       "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 2,
-    title: "Gloss White Transformation",
+    title: "Blank Vit Transformation",
     imageUrl:
       "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 3,
-    title: "Chrome Delete Package",
+    title: "Chrome Delete Paket",
     imageUrl:
       "https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 4,
-    title: "Performance Window Tint",
+    title: "Högpresterande Fönsterfilm",
     imageUrl:
       "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80",
   },
@@ -33,7 +34,7 @@ const portfolioItems = [
   },
   {
     id: 6,
-    title: "Custom Livery Design",
+    title: "Anpassad Design",
     imageUrl:
       "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80",
   },
@@ -51,7 +52,7 @@ const PortfolioSection = () => {
     >
       <div className="container-wide">
         <h2 className="text-4xl md:text-5xl font-poppins font-bold text-center mb-16">
-          Our Work
+          Våra Projekt
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

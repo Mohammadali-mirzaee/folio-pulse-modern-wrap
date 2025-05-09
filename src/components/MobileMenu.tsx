@@ -63,7 +63,7 @@ const MobileMenu = ({ isOpen, onClose, navigationItems, onNavigate }: MobileMenu
         <button 
           className="text-white p-2"
           onClick={onClose}
-          aria-label="Close menu"
+          aria-label="Stäng meny"
         >
           <X size={24} />
         </button>

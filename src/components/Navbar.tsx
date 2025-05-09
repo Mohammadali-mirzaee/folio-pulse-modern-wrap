@@ -31,11 +31,11 @@ const Navbar = () => {
   };
 
   const navigationItems = [
-    { name: 'Home', id: 'hero' },
-    { name: 'About', id: 'about' },
-    { name: 'Services', id: 'services' },
+    { name: 'Hem', id: 'hero' },
+    { name: 'Om Oss', id: 'about' },
+    { name: 'Tjänster', id: 'services' },
     { name: 'Portfolio', id: 'portfolio' },
-    { name: 'Contact', id: 'contact' }
+    { name: 'Kontakt', id: 'contact' }
   ];
 
   return (
@@ -55,7 +55,7 @@ const Navbar = () => {
           <button 
             className="block md:hidden text-white relative z-30"
             onClick={() => setIsOpen(true)}
-            aria-label="Open menu"
+            aria-label="Öppna meny"
           >
             <Menu size={24} />
           </button>

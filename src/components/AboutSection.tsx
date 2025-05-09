@@ -36,10 +36,10 @@ const AboutSection = () => {
       <div className="container-wide">
         <div className="max-w-3xl mx-auto text-center opacity-0 reveal">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-extrabold mb-6">
-            <span className="text-accent">Driven</span> by Craftsmanship
+            <span className="text-accent">Drivna</span> av Hantverk
           </h2>
           <p className="text-lg md:text-xl font-light text-white/80 mb-8">
-            Focused on vehicle wrapping, detailing, and custom styling in Gothenburg.
+            Specialiserade på bilfoliering, detaljering och anpassad styling i Göteborg.
           </p>
           <div className="w-20 h-1 bg-accent mx-auto"></div>
         </div>

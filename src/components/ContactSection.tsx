@@ -20,7 +20,7 @@ const ContactSection = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    toast.success('Thank you for your message! We will get back to you soon.');
+    toast.success('Tack för ditt meddelande! Vi återkommer så snart som möjligt.');
     console.log('Form submitted:', formData);
     setFormData({
       name: '',
@@ -34,7 +34,7 @@ const ContactSection = () => {
       <div className="container-wide">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-poppins font-bold text-center mb-16">
-            Get in Touch
+            Kontakta Oss
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -43,7 +43,7 @@ const ContactSection = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-1">
-                    Name
+                    Namn
                   </label>
                   <input
                     type="text"
@@ -58,7 +58,7 @@ const ContactSection = () => {
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-1">
-                    Email
+                    E-post
                   </label>
                   <input
                     type="email"
@@ -73,7 +73,7 @@ const ContactSection = () => {
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-1">
-                    Message
+                    Meddelande
                   </label>
                   <textarea
                     id="message"
@@ -90,7 +90,7 @@ const ContactSection = () => {
                   type="submit"
                   className="bg-accent hover:bg-accent/80 text-white py-3 px-6 w-full rounded transition-all duration-300 flex items-center justify-center font-medium"
                 >
-                  <Send size={18} className="mr-2" /> Send Message
+                  <Send size={18} className="mr-2" /> Skicka Meddelande
                 </button>
               </form>
             </div>
@@ -99,7 +99,7 @@ const ContactSection = () => {
             <div className="flex flex-col justify-center">
               <div className="space-y-8">
                 <h3 className="text-2xl font-poppins font-semibold mb-4">
-                  Connect With Us
+                  Följ Oss
                 </h3>
                 
                 <div className="flex items-center space-x-6">
@@ -126,12 +126,12 @@ const ContactSection = () => {
                     <div className="bg-accent/10 p-3 rounded-full group-hover:bg-accent/20 transition-colors">
                       <MessageSquare size={24} className="text-accent" />
                     </div>
-                    <span className="text-white/80 group-hover:text-accent transition-colors">WhatsApp Us</span>
+                    <span className="text-white/80 group-hover:text-accent transition-colors">WhatsApp Oss</span>
                   </a>
                 </div>
                 
                 <p className="text-white/60 mt-8">
-                  Based in Gothenburg, Sweden. We service vehicles throughout the region, bringing premium styling solutions to your location.
+                  Baserad i Göteborg, Sverige. Vi servar fordon i hela regionen och erbjuder premium stylinglösningar direkt till din plats.
                 </p>
               </div>
             </div>

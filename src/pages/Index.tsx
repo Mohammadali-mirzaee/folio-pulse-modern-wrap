@@ -12,7 +12,7 @@ import Footer from '@/components/Footer';
 const Index = () => {
   useEffect(() => {
     // Set the document title
-    document.title = "Elias Foliering | Vehicle Styling";
+    document.title = "Elias Foliering | Bilstyling";
   }, []);
 
   return (

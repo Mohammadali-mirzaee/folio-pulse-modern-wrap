@@ -11,11 +11,11 @@ const ServicesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const services: Service[] = [
-    { icon: Wrench, title: "Car Wrapping (Foliering)" },
+    { icon: Wrench, title: "Bilfoliering" },
     { icon: PaintRoller, title: "Chrome Delete" },
-    { icon: Droplet, title: "Solfilm (Window Tinting)" },
-    { icon: Film, title: "PPF (Paint Protection Film)" },
-    { icon: Sun, title: "Light Tinting" },
+    { icon: Droplet, title: "Solfilm" },
+    { icon: Film, title: "PPF (Skyddsfilm)" },
+    { icon: Sun, title: "Ljustoning" },
     { icon: Palette, title: "Styling" },
   ];
   
@@ -50,7 +50,7 @@ const ServicesSection = () => {
     <section id="services" ref={sectionRef} className="section-padded bg-black">
       <div className="container-wide">
         <h2 className="text-4xl md:text-5xl font-poppins font-bold text-center mb-16 opacity-0 reveal">
-          Services
+          Tjänster
         </h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">

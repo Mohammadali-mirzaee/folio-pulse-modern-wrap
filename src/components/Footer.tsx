@@ -14,13 +14,13 @@ const Footer = () => {
       <div className="container-wide">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-white/70 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} Elias Foliering. All rights reserved.
+            © {new Date().getFullYear()} Elias Foliering. Alla rättigheter förbehållna.
           </div>
           
           <button
             onClick={scrollToTop}
             className="bg-charcoal/50 hover:bg-accent/80 text-white p-3 rounded-full transition-all duration-300"
-            aria-label="Scroll to top"
+            aria-label="Scrolla till toppen"
           >
             <ArrowUp size={18} />
           </button>

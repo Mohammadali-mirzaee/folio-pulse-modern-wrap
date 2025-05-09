@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { ArrowDown } from "lucide-react";
 
@@ -21,7 +22,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src="/lovable-uploads/hero.jpg"
-          alt="Stylish car silhouette"
+          alt="Stilfull bilsilhuett"
           className="w-full h-full object-cover object-center animate-fade-in"
           style={{ zIndex: 0 }}
         />
@@ -44,9 +45,9 @@ const HeroSection = () => {
               : "opacity-0 translate-y-10"
           } transition-all duration-1000 ease-out`}
         >
-          Vehicle Styling. Precision. Passion.
+          Bilstyling. Precision. Passion.
         </p>
-        <button onClick={scrollToContact}>Get in Touch</button>
+        <button onClick={scrollToContact}>Kontakta Oss</button>
       </div>
 
       {/* Scroll Indicator */}
