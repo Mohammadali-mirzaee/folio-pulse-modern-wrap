@@ -1,12 +1,23 @@
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowDown } from "lucide-react";
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setIsLoaded(true);
+
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const scrollPosition = window.scrollY;
+        setScrollY(scrollPosition * 0.5); // Parallax effect multiplier
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToContact = () => {
@@ -17,9 +28,16 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative h-screen w-full overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
+    <section
+      id="hero"
+      ref={heroRef}
+      className="relative h-screen w-full overflow-hidden"
+    >
+      {/* Background Image with Parallax */}
+      <div
+        className="absolute inset-0"
+        style={{ transform: `translateY(${scrollY}px)` }}
+      >
         <img
           src="/lovable-uploads/hero.jpg"
           alt="Stilfull bilsilhuett"
@@ -47,6 +65,7 @@ const HeroSection = () => {
         >
           Bilstyling. Precision. Passion.
         </p>
+
         <button onClick={scrollToContact}>Kontakta Oss</button>
       </div>
 
