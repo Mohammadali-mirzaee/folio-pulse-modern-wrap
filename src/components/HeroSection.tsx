@@ -1,30 +1,46 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { throttle } from "lodash";
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLElement>(null);
+  const parallaxRef = useRef<HTMLDivElement>(null);
+
+  // Throttled scroll handler
+  const handleScroll = useCallback(
+    throttle(() => {
+      if (parallaxRef.current) {
+        const scrollPosition = window.scrollY;
+        // Use transform3d for hardware acceleration
+        parallaxRef.current.style.transform = `translate3d(0, ${scrollPosition * 0.3}px, 0)`;
+      }
+    }, 16), // ~60fps
+    []
+  );
 
   useEffect(() => {
     setIsLoaded(true);
-
-    const handleScroll = () => {
-      if (heroRef.current) {
-        const scrollPosition = window.scrollY;
-        setScrollY(scrollPosition * 0.5); // Parallax effect multiplier
-      }
-    };
-
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      handleScroll.cancel(); // Clean up throttled function
+    };
+  }, [handleScroll]);
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
+      const navbarHeight = 80; // Approximate height of the navbar
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
 
@@ -32,18 +48,21 @@ const HeroSection = () => {
     <section
       id="hero"
       ref={heroRef}
-      className="relative h-screen w-full overflow-hidden"
+      className="relative h-screen w-full overflow-hidden will-change-transform"
     >
       {/* Background Image with Parallax */}
       <div
-        className="absolute inset-0"
-        style={{ transform: `translateY(${scrollY}px)` }}
+        ref={parallaxRef}
+        className="absolute inset-0 will-change-transform"
       >
         <img
           src="/lovable-uploads/hero.jpg"
           alt="Stilfull bilsilhuett"
           className="w-full h-full object-cover object-center animate-fade-in"
-          style={{ zIndex: 0 }}
+          style={{ 
+            zIndex: 0,
+            transform: 'translate3d(0, 0, 0)', // Force hardware acceleration
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-charcoal z-10"></div>
       </div>
