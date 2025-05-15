@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -26,7 +25,14 @@ const Navbar = () => {
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 80; // Approximate height of the navbar
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
 

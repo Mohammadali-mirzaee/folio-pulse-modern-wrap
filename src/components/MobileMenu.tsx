@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
@@ -80,8 +79,11 @@ const MobileMenu = ({ isOpen, onClose, navigationItems, onNavigate }: MobileMenu
               key={item.id}
               className="text-2xl text-white hover:text-accent transition-colors duration-300"
               onClick={() => {
-                onNavigate(item.id);
                 onClose();
+                // Add a small delay to ensure the body scroll is restored before scrolling
+                setTimeout(() => {
+                  onNavigate(item.id);
+                }, 100);
               }}
             >
               {item.name}

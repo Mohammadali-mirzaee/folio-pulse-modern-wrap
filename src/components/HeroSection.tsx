@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -66,7 +67,13 @@ const HeroSection = () => {
           Bilstyling. Precision. Passion.
         </p>
 
-        <button onClick={scrollToContact}>Kontakta Oss</button>
+        <Button 
+          onClick={scrollToContact}
+          size="lg"
+          className="bg-white text-black hover:bg-white/90 transition-all duration-300 text-base font-medium px-8 py-6 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform"
+        >
+          Kontakta Oss
+        </Button>
       </div>
 
       {/* Scroll Indicator */}
