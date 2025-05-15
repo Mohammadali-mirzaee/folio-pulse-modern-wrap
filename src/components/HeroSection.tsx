@@ -1,25 +1,39 @@
-import { useState, useEffect, useRef } from "react";
+
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ArrowDown } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
+  const ticking = useRef(false);
+
+  // Optimized scroll handler with requestAnimationFrame
+  const handleScroll = useCallback(() => {
+    if (!ticking.current && !isMobile) {
+      requestAnimationFrame(() => {
+        if (heroRef.current) {
+          const scrollPosition = window.scrollY;
+          setScrollY(scrollPosition * 0.5); // Parallax effect multiplier
+        }
+        ticking.current = false;
+      });
+      ticking.current = true;
+    }
+  }, [isMobile]);
 
   useEffect(() => {
     setIsLoaded(true);
 
-    const handleScroll = () => {
-      if (heroRef.current) {
-        const scrollPosition = window.scrollY;
-        setScrollY(scrollPosition * 0.5); // Parallax effect multiplier
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    // Only add scroll listener if not on mobile
+    if (!isMobile) {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, [handleScroll, isMobile]);
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
@@ -34,10 +48,10 @@ const HeroSection = () => {
       ref={heroRef}
       className="relative h-screen w-full overflow-hidden"
     >
-      {/* Background Image with Parallax */}
+      {/* Background Image with Parallax (disabled on mobile) */}
       <div
         className="absolute inset-0"
-        style={{ transform: `translateY(${scrollY}px)` }}
+        style={{ transform: isMobile ? 'none' : `translateY(${scrollY}px)` }}
       >
         <img
           src="/lovable-uploads/hero.jpg"
@@ -69,8 +83,7 @@ const HeroSection = () => {
 
         <Button 
           onClick={scrollToContact}
-          size="lg"
-          className="bg-white text-black hover:bg-white/90 transition-all duration-300 text-base font-medium px-8 py-6 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform"
+          className="bg-accent hover:bg-accent/90 text-white px-6 py-2 rounded-md transition-colors"
         >
           Kontakta Oss
         </Button>
