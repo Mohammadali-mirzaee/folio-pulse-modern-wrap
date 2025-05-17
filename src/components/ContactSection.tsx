@@ -1,32 +1,69 @@
-
 import { useState, FormEvent } from 'react';
-import { Instagram, Send, MessageSquare } from 'lucide-react';
+import { Instagram, Send, MessageSquare, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import emailjs from 'emailjs-com';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+
+// Form validation schema
+const formSchema = z.object({
+  name: z.string().min(2, { message: 'Namn måste vara minst 2 tecken.' }),
+  email: z.string().email({ message: 'Ange en giltig e-postadress.' }),
+  message: z.string().min(10, { message: 'Meddelande måste vara minst 10 tecken.' }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    toast.success('Tack för ditt meddelande! Vi återkommer så snart som möjligt.');
-    console.log('Form submitted:', formData);
-    setFormData({
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Initialize the form with react-hook-form and zod validation
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
       name: '',
       email: '',
       message: '',
-    });
+    },
+  });
+
+  const onSubmit = async (values: FormValues) => {
+    setIsSubmitting(true);
+    
+    try {
+      // Replace these values with your actual EmailJS credentials
+      const serviceId = 'YOUR_EMAILJS_SERVICE_ID'; // User needs to enter their EmailJS Service ID
+      const templateId = 'YOUR_EMAILJS_TEMPLATE_ID'; // User needs to enter their EmailJS Template ID
+      const userId = 'YOUR_EMAILJS_USER_ID'; // User needs to enter their EmailJS User ID
+      
+      const templateParams = {
+        from_name: values.name,
+        from_email: values.email,
+        message: values.message,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, userId);
+      
+      toast.success('Tack för ditt meddelande! Vi återkommer så snart som möjligt.');
+      form.reset();
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      toast.error('Det gick inte att skicka meddelandet. Försök igen senare.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -40,59 +77,84 @@ const ContactSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div className="bg-charcoal/50 p-8 rounded-lg">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-1">
-                    Namn
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <FormField
+                    control={form.control}
                     name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="bg-black/50 w-full px-4 py-3 rounded border border-white/10 focus:outline-none focus:border-accent text-white"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-white/80">Namn</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            className="bg-black/50 px-4 py-3 rounded border border-white/10 focus:outline-none focus:border-accent text-white"
+                            placeholder="Ditt namn"
+                            disabled={isSubmitting}
+                          />
+                        </FormControl>
+                        <FormMessage className="text-red-400" />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-1">
-                    E-post
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
+                  
+                  <FormField
+                    control={form.control}
                     name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="bg-black/50 w-full px-4 py-3 rounded border border-white/10 focus:outline-none focus:border-accent text-white"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-white/80">E-post</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            type="email"
+                            className="bg-black/50 px-4 py-3 rounded border border-white/10 focus:outline-none focus:border-accent text-white"
+                            placeholder="din@epost.se"
+                            disabled={isSubmitting}
+                          />
+                        </FormControl>
+                        <FormMessage className="text-red-400" />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-1">
-                    Meddelande
-                  </label>
-                  <textarea
-                    id="message"
+                  
+                  <FormField
+                    control={form.control}
                     name="message"
-                    rows={5}
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="bg-black/50 w-full px-4 py-3 rounded border border-white/10 focus:outline-none focus:border-accent text-white resize-none"
-                  ></textarea>
-                </div>
-                
-                <button 
-                  type="submit"
-                  className="bg-white text-charcoal py-3 px-6 w-full rounded-[4px] transition-all duration-300 flex items-center justify-center font-medium hover:bg-white/90"
-                >
-                  <Send size={18} className="mr-2" /> Skicka Meddelande
-                </button>
-              </form>
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-white/80">Meddelande</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            {...field}
+                            rows={5}
+                            className="bg-black/50 px-4 py-3 rounded border border-white/10 focus:outline-none focus:border-accent text-white resize-none"
+                            placeholder="Ditt meddelande..."
+                            disabled={isSubmitting}
+                          />
+                        </FormControl>
+                        <FormMessage className="text-red-400" />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <Button 
+                    type="submit"
+                    className="bg-white text-charcoal py-3 px-6 w-full rounded-[4px] transition-all duration-300 flex items-center justify-center font-medium hover:bg-white/90 h-auto"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 size={18} className="mr-2 animate-spin" /> Skickar...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={18} className="mr-2" /> Skicka Meddelande
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </Form>
             </div>
             
             {/* Contact Info */}
