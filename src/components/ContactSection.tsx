@@ -1,3 +1,4 @@
+
 import { useState, FormEvent } from 'react';
 import { Instagram, Send, MessageSquare, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -26,6 +27,9 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+// Initialize EmailJS with the public key
+emailjs.init("elyaskazemi491@gmail.com");
+
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   
@@ -43,10 +47,9 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Replace these values with your actual EmailJS credentials
-      const serviceId = 'YOUR_EMAILJS_SERVICE_ID'; // User needs to enter their EmailJS Service ID
-      const templateId = 'YOUR_EMAILJS_TEMPLATE_ID'; // User needs to enter their EmailJS Template ID
-      const userId = 'YOUR_EMAILJS_USER_ID'; // User needs to enter their EmailJS User ID
+      // Your actual EmailJS credentials
+      const serviceId = 'service_md77bnv';
+      const templateId = 'template_9ggraz2';
       
       const templateParams = {
         from_name: values.name,
@@ -54,13 +57,34 @@ const ContactSection = () => {
         message: values.message,
       };
 
-      await emailjs.send(serviceId, templateId, templateParams, userId);
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams
+      );
       
-      toast.success('Tack för ditt meddelande! Vi återkommer så snart som möjligt.');
-      form.reset();
+      if (result.status === 200) {
+        toast.success('Tack för ditt meddelande! Vi återkommer så snart som möjligt.');
+        form.reset();
+      } else {
+        throw new Error(`Unexpected response status: ${result.status}`);
+      }
     } catch (error) {
       console.error('Failed to send email:', error);
-      toast.error('Det gick inte att skicka meddelandet. Försök igen senare.');
+      
+      let errorMessage = 'Det gick inte att skicka meddelandet. Försök igen senare.';
+      
+      // Provide more detailed error message if possible
+      if (error instanceof Error) {
+        console.error('Error details:', error.message);
+        
+        if (error.message.includes('Network Error') || error.message.includes('Failed to fetch')) {
+          errorMessage = 'Nätverksfel. Kontrollera din internetanslutning och försök igen.';
+        }
+      }
+      
+      toast.error(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
