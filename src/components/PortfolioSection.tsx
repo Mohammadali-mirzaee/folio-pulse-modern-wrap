@@ -80,7 +80,7 @@ const PortfolioSection = () => {
     <section
       id="portfolio"
       ref={sectionRef}
-      className="section-padded bg-charcoal"
+      className="section-padded bg-black"
     >
       <div className="container-wide">
         <h2 className={`text-4xl md:text-5xl font-poppins font-bold text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

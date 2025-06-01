@@ -49,7 +49,7 @@ const Index = () => {
 
   return (
     <div 
-      className={`min-h-screen w-full bg-charcoal transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      className={`min-h-screen w-full bg-black transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
       data-active-section={activeSection}
     >
       <Navbar />

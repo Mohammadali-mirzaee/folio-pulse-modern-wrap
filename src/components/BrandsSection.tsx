@@ -35,7 +35,7 @@ const BrandsSection = () => {
     <section
       id="brands"
       ref={sectionRef}
-      className="section-padded bg-charcoal"
+      className="section-padded bg-black"
     >
       <div className="container-wide">
         <h2 className="text-4xl md:text-5xl font-poppins font-bold text-center mb-16 opacity-0 reveal-brand">

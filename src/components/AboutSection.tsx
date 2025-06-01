@@ -51,7 +51,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="section bg-charcoal">
+    <section id="about" ref={sectionRef} className="section bg-black">
       <div className="container-wide">
         <div ref={textRef} className="max-w-3xl mx-auto text-center opacity-0 reveal">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-extrabold mb-6">
