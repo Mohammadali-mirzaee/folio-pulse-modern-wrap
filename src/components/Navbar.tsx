@@ -57,13 +57,13 @@ const Navbar = () => {
             ELIAS FOLIERING
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Improved for better touch interaction */}
           <button 
-            className="block md:hidden text-white relative z-30"
+            className="block md:hidden text-white relative z-30 p-3 -mr-3 min-w-[48px] min-h-[48px] flex items-center justify-center rounded-lg transition-all duration-200 active:bg-white/10 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-accent/50"
             onClick={() => setIsOpen(true)}
             aria-label="Öppna meny"
           >
-            <Menu size={24} />
+            <Menu size={24} className="transition-transform duration-200 active:scale-95" />
           </button>
 
           {/* Desktop Navigation */}
