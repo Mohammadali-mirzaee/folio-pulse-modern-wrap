@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -59,7 +60,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button - Improved for better touch interaction */}
           <button 
-            className="block md:hidden text-white relative z-30 p-3 -mr-3 min-w-[48px] min-h-[48px] flex items-center justify-center rounded-lg transition-all duration-200 active:bg-white/10 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-accent/50"
+            className="block md:hidden text-white relative z-30 p-3 mr-4 min-w-[48px] min-h-[48px] flex items-center justify-center rounded-lg transition-all duration-200 active:bg-white/10 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-accent/50"
             onClick={() => setIsOpen(true)}
             aria-label="Öppna meny"
           >
