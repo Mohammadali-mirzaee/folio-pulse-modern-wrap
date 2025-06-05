@@ -1,7 +1,7 @@
-
 import { useRef, useState, useEffect } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useIsMobile } from "@/hooks/use-mobile";
+import type { CarouselApi } from "@/components/ui/carousel";
 
 const portfolioItems = [
   {
@@ -52,6 +52,9 @@ const PortfolioSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -79,9 +82,22 @@ const PortfolioSection = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
   const renderPortfolioItem = (item: typeof portfolioItems[0], index: number) => (
     <div
-      className={`group relative overflow-hidden rounded-lg cursor-pointer h-64 sm:h-80 transition-all duration-700 transform ${
+      className={`group relative overflow-hidden rounded-lg cursor-pointer h-80 sm:h-96 transition-all duration-700 transform ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
@@ -125,25 +141,40 @@ const PortfolioSection = () => {
     <section
       id="portfolio"
       ref={sectionRef}
-      className="section-padded bg-black"
+      className="section-padded bg-black py-32"
     >
       <div className="container-wide">
-        <h2 className={`text-4xl md:text-5xl font-poppins font-bold text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <h2 className={`text-4xl md:text-5xl font-poppins font-bold text-center mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           Våra Projekt
         </h2>
 
         {isMobile ? (
-          <Carousel className="w-full">
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {portfolioItems.map((item, index) => (
-                <CarouselItem key={item.id} className="pl-2 md:pl-4">
-                  {renderPortfolioItem(item, index)}
-                </CarouselItem>
+          <div className="space-y-6">
+            <Carousel className="w-full" setApi={setApi}>
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {portfolioItems.map((item, index) => (
+                  <CarouselItem key={item.id} className="pl-2 md:pl-4">
+                    {renderPortfolioItem(item, index)}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="text-white border-white/20 hover:bg-white/10" />
+              <CarouselNext className="text-white border-white/20 hover:bg-white/10" />
+            </Carousel>
+            
+            {/* Dots Navigation */}
+            <div className="flex justify-center space-x-2 mt-8">
+              {Array.from({ length: count }, (_, index) => (
+                <button
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index + 1 === current ? 'bg-accent' : 'bg-white/30'
+                  }`}
+                  onClick={() => api?.scrollTo(index)}
+                />
               ))}
-            </CarouselContent>
-            <CarouselPrevious className="text-white border-white/20 hover:bg-white/10" />
-            <CarouselNext className="text-white border-white/20 hover:bg-white/10" />
-          </Carousel>
+            </div>
+          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {portfolioItems.map((item, index) => (
