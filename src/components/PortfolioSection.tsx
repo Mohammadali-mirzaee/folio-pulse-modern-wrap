@@ -1,5 +1,7 @@
 
 import { useRef, useState, useEffect } from "react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const portfolioItems = [
   {
@@ -50,6 +52,7 @@ const PortfolioSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -76,6 +79,48 @@ const PortfolioSection = () => {
     };
   }, []);
 
+  const renderPortfolioItem = (item: typeof portfolioItems[0], index: number) => (
+    <div
+      className={`group relative overflow-hidden rounded-lg cursor-pointer h-64 sm:h-80 transition-all duration-700 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+      onMouseEnter={() => setHoveredItem(item.id)}
+      onMouseLeave={() => setHoveredItem(null)}
+    >
+      {/* Overlay Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/80 group-hover:from-black/30 group-hover:via-black/40 group-hover:to-black/90 transition-colors duration-500 z-10"></div>
+      
+      {/* Portfolio Image */}
+      <img
+        src={item.imageUrl}
+        alt={item.title}
+        className={`w-full h-full object-cover transition-all duration-700 ease-out ${
+          hoveredItem === item.id ? 'scale-110 filter brightness-90' : 'scale-100'
+        }`}
+      />
+      
+      {/* Content */}
+      <div className={`absolute bottom-0 left-0 right-0 p-4 z-20 transition-all duration-500 ${
+        hoveredItem === item.id ? 'translate-y-0' : 'translate-y-2'
+      }`}>
+        <h3 className="text-lg font-poppins font-semibold mb-1">
+          {item.title}
+        </h3>
+        <p className={`text-sm text-white/70 transition-all duration-500 ${
+          hoveredItem === item.id ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
+        } overflow-hidden`}>
+          {item.description}
+        </p>
+      </div>
+      
+      {/* Hover Effect Accent Line */}
+      <div className={`absolute bottom-0 left-0 w-0 h-1 bg-accent z-20 transition-all duration-300 ${
+        hoveredItem === item.id ? 'w-full' : 'w-0'
+      }`}></div>
+    </div>
+  );
+
   return (
     <section
       id="portfolio"
@@ -87,50 +132,27 @@ const PortfolioSection = () => {
           Våra Projekt
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {portfolioItems.map((item, index) => (
-            <div
-              key={item.id}
-              className={`group relative overflow-hidden rounded-lg cursor-pointer h-64 sm:h-80 transition-all duration-700 transform ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-              onMouseEnter={() => setHoveredItem(item.id)}
-              onMouseLeave={() => setHoveredItem(null)}
-            >
-              {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/80 group-hover:from-black/30 group-hover:via-black/40 group-hover:to-black/90 transition-colors duration-500 z-10"></div>
-              
-              {/* Portfolio Image */}
-              <img
-                src={item.imageUrl}
-                alt={item.title}
-                className={`w-full h-full object-cover transition-all duration-700 ease-out ${
-                  hoveredItem === item.id ? 'scale-110 filter brightness-90' : 'scale-100'
-                }`}
-              />
-              
-              {/* Content */}
-              <div className={`absolute bottom-0 left-0 right-0 p-4 z-20 transition-all duration-500 ${
-                hoveredItem === item.id ? 'translate-y-0' : 'translate-y-2'
-              }`}>
-                <h3 className="text-lg font-poppins font-semibold mb-1">
-                  {item.title}
-                </h3>
-                <p className={`text-sm text-white/70 transition-all duration-500 ${
-                  hoveredItem === item.id ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
-                } overflow-hidden`}>
-                  {item.description}
-                </p>
+        {isMobile ? (
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {portfolioItems.map((item, index) => (
+                <CarouselItem key={item.id} className="pl-2 md:pl-4">
+                  {renderPortfolioItem(item, index)}
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="text-white border-white/20 hover:bg-white/10" />
+            <CarouselNext className="text-white border-white/20 hover:bg-white/10" />
+          </Carousel>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {portfolioItems.map((item, index) => (
+              <div key={item.id}>
+                {renderPortfolioItem(item, index)}
               </div>
-              
-              {/* Hover Effect Accent Line */}
-              <div className={`absolute bottom-0 left-0 w-0 h-1 bg-accent z-20 transition-all duration-300 ${
-                hoveredItem === item.id ? 'w-full' : 'w-0'
-              }`}></div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
