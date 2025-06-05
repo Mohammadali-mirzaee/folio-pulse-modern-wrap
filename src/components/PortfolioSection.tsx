@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useIsMobile } from "@/hooks/use-mobile";
 import type { CarouselApi } from "@/components/ui/carousel";
 
@@ -158,8 +158,6 @@ const PortfolioSection = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="text-white border-white/20 hover:bg-white/10" />
-              <CarouselNext className="text-white border-white/20 hover:bg-white/10" />
             </Carousel>
             
             {/* Dots Navigation */}
