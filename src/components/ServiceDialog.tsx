@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Shield, CheckCircle, Calendar, MessageCircle } from "lucide-react";
+import { Star, Shield, CheckCircle, Calendar } from "lucide-react";
 
 export type ServiceData = {
   icon: React.ElementType;
@@ -126,15 +126,11 @@ const ServiceDialog = ({ service, isOpen, onClose }: ServiceDialogProps) => {
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex gap-4 pt-4 border-t border-white/10">
-            <Button className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600">
+          {/* Action Button */}
+          <div className="pt-4 border-t border-white/10">
+            <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600">
               <Calendar className="mr-2" size={16} />
               Boka tid
-            </Button>
-            <Button variant="outline" className="flex-1 border-white/20 text-white hover:bg-white/10">
-              <MessageCircle className="mr-2" size={16} />
-              Få offert
             </Button>
           </div>
         </div>
