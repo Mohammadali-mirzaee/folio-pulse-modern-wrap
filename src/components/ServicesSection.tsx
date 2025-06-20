@@ -25,27 +25,6 @@ const ServicesSection = () => {
       description: "Premium vinylfoliering för att förnya din bils utseende med professionell kvalitet.",
       detailedDescription: "Vår bilfoliering är den ultimata lösningen för att ge din bil ett helt nytt utseende utan att skada originallacken. Vi använder endast högkvalitativa material från ledande tillverkare som 3M och Avery Dennison. Processen är fullständigt reversibel och skyddar samtidigt din bils lack från stenar, repor och UV-strålning.",
       images: ["/lovable-uploads/hero.jpg", "/lovable-uploads/hero2.png"],
-      packages: [
-        {
-          name: "Basic",
-          price: "15 000 kr",
-          duration: "2-3 dagar",
-          features: ["Partiell foliering", "1 färg", "3 års garanti", "Grundläggande design"]
-        },
-        {
-          name: "Premium",
-          price: "35 000 kr",
-          duration: "4-5 dagar",
-          features: ["Helfoliering", "Premium material", "5 års garanti", "Anpassad design", "Gratis underhåll 1 år"],
-          popular: true
-        },
-        {
-          name: "Ultimate",
-          price: "55 000 kr",
-          duration: "6-7 dagar",
-          features: ["Helfoliering", "Exklusiva material", "7 års garanti", "Unik design", "Livslångt underhåll", "Detailing inkluderat"]
-        }
-      ],
       processSteps: [
         "Konsultation och designförslag",
         "Bil förberedelse och rengöring",
@@ -66,27 +45,6 @@ const ServicesSection = () => {
       description: "Omvandla blanka kromdetaljer till elegant matt eller svart finish för ett modernt utseende.",
       detailedDescription: "Chrome Delete är den perfekta tjänsten för att modernisera din bils utseende. Vi täcker alla blanka kromdetaljer med högkvalitativ vinylfolie i matt svart, satin eller andra finish. Detta ger din bil ett mer sammanhängande och modernt utseende samtidigt som de ursprungliga delarna skyddas.",
       images: ["/lovable-uploads/hero.jpg"],
-      packages: [
-        {
-          name: "Grund",
-          price: "3 500 kr",
-          duration: "4-6 timmar",
-          features: ["Grill och trim", "Matt svart finish", "2 års garanti"]
-        },
-        {
-          name: "Komplett",
-          price: "7 500 kr",
-          duration: "1 dag",
-          features: ["Alla kromdetaljer", "Flera finish-alternativ", "3 års garanti", "Speglar inkluderade"],
-          popular: true
-        },
-        {
-          name: "Premium",
-          price: "12 000 kr",
-          duration: "1-2 dagar",
-          features: ["Alla kromdetaljer", "Premium finish", "5 års garanti", "Detailing inkluderat", "Fönsterfolie rabatt"]
-        }
-      ],
       processSteps: [
         "Identifiering av alla kromdetaljer",
         "Noggrann rengöring och avfettning",
@@ -107,27 +65,6 @@ const ServicesSection = () => {
       description: "UV-skydd och värmereducering med högkvalitativ fönsterfilm för komfort och stil.",
       detailedDescription: "Vår professionella solfilm ger dig både komfort och stil. Med upp till 99% UV-skydd och betydande värmereducering förbättras både körkomforten och bilens energieffektivitet. Vi erbjuder olika tintgrader för att matcha dina preferenser och lokala regleringar.",
       images: ["/lovable-uploads/hero2.png"],
-      packages: [
-        {
-          name: "Standard",
-          price: "4 500 kr",
-          duration: "3-4 timmar",
-          features: ["Sidorutor", "50% tint", "5 års garanti", "UV-skydd"]
-        },
-        {
-          name: "Premium",
-          price: "8 500 kr",
-          duration: "4-6 timmar",
-          features: ["Alla rutor", "Flera tint-alternativ", "8 års garanti", "Värmereducering", "IR-avvisning"],
-          popular: true
-        },
-        {
-          name: "Ceramic Pro",
-          price: "15 000 kr",
-          duration: "6-8 timmar",
-          features: ["Keramisk film", "Maximalt UV-skydd", "10 års garanti", "Signal-transparent", "Premium service"]
-        }
-      ],
       processSteps: [
         "Mätning och materialval",
         "Noggrann rutordning",
@@ -148,27 +85,6 @@ const ServicesSection = () => {
       description: "Osynligt skydd mot stenslag, repor och vägsmuts med självläkande teknologi.",
       detailedDescription: "Paint Protection Film (PPF) är den ultimata lösningen för att skydda din bils lack. Vår självläkande film är praktiskt taget osynlig och skyddar mot stenslag, repor, fågelspillning och andra miljöpåverkan. Filmen har självläkande egenskaper som gör att mindre repor försvinner med värme.",
       images: ["/lovable-uploads/hero.jpg", "/lovable-uploads/hero2.png"],
-      packages: [
-        {
-          name: "Frontal",
-          price: "12 000 kr",
-          duration: "1-2 dagar",
-          features: ["Motorhuv och stötfångare", "Själväkande film", "7 års garanti"]
-        },
-        {
-          name: "Komplett Front",
-          price: "25 000 kr",
-          duration: "3-4 dagar",
-          features: ["Hela fronten", "Sidospeglar", "10 års garanti", "Hydrofobisk finish"],
-          popular: true
-        },
-        {
-          name: "Helskydd",
-          price: "65 000 kr",
-          duration: "7-10 dagar",
-          features: ["Hela bilen", "Premium film", "12 års garanti", "Årlig inspektion", "Livslångt underhåll"]
-        }
-      ],
       processSteps: [
         "Detaljerad bilpreparation",
         "Datorstyrd skärning",
@@ -189,27 +105,6 @@ const ServicesSection = () => {
       description: "Anpassad toning av strålkastare för ett unikt och aggressivt utseende.",
       detailedDescription: "Vår ljustoning ger din bil en unik och aggressiv look samtidigt som ljusutgången bibehålls inom lagliga gränser. Vi använder specialfilm som tåler värme och väder. Tjänsten inkluderar både fram- och bakljus enligt dina önskemål.",
       images: ["/lovable-uploads/hero.jpg"],
-      packages: [
-        {
-          name: "Basic",
-          price: "2 500 kr",
-          duration: "2-3 timmar",
-          features: ["Bakljus", "Ljus toning", "2 års garanti"]
-        },
-        {
-          name: "Sport",
-          price: "4 500 kr",
-          duration: "3-4 timmar",
-          features: ["Fram- och bakljus", "Medium toning", "3 års garanti", "Anpassad design"],
-          popular: true
-        },
-        {
-          name: "Race",
-          price: "7 500 kr",
-          duration: "4-6 timmar",
-          features: ["Alla ljus", "Maximal toning", "5 års garanti", "Unik design", "LED-vänlig"]
-        }
-      ],
       processSteps: [
         "Demontage av ljusenheter",
         "Grundlig rengöring",
@@ -230,27 +125,6 @@ const ServicesSection = () => {
       description: "Skräddarsydda designlösningar för att framhäva din bils unika karaktär.",
       detailedDescription: "Vårt stylingteam skapar skräddarsydda lösningar för att göra din bil helt unik. Från subtila accenter till dramatiska transformationer - vi arbetar med dig för att skapa något som verkligen speglar din personlighet och stil.",
       images: ["/lovable-uploads/hero2.png"],
-      packages: [
-        {
-          name: "Accent",
-          price: "5 000 kr",
-          duration: "1-2 dagar",
-          features: ["Subtila accenter", "1-2 designelement", "3 års garanti"]
-        },
-        {
-          name: "Transform",
-          price: "15 000 kr",
-          duration: "3-5 dagar",
-          features: ["Komplett styling", "Anpassad design", "5 års garanti", "Designkonsultation"],
-          popular: true
-        },
-        {
-          name: "Unique",
-          price: "35 000 kr",
-          duration: "1-2 veckor",
-          features: ["Helt unik design", "Obegränsade revideringar", "7 års garanti", "Exklusiva material", "Show-ready finish"]
-        }
-      ],
       processSteps: [
         "Designkonsultation",
         "Konceptutveckling",
@@ -335,13 +209,6 @@ const ServicesSection = () => {
                 onMouseLeave={() => setHoveredService(null)}
                 onClick={() => handleServiceClick(service)}
               >
-                {/* Highlight Badge */}
-                {service.packages.some(pkg => pkg.popular) && (
-                  <div className="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    Populär
-                  </div>
-                )}
-                
                 {/* Card */}
                 <div className="relative h-full bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-500 group-hover:border-cyan-500/50 group-hover:shadow-2xl group-hover:shadow-cyan-500/10 group-hover:-translate-y-2">
                   {/* Hover Glow Effect */}
@@ -381,16 +248,6 @@ const ServicesSection = () => {
                     <p className="text-white/60 text-sm leading-relaxed mb-6 group-hover:text-white/80 transition-colors duration-300">
                       {service.description}
                     </p>
-
-                    {/* Pricing */}
-                    <div className="mb-6">
-                      <div className="text-cyan-400 font-bold text-lg">
-                        Från {service.packages[0].price}
-                      </div>
-                      <div className="text-white/60 text-sm">
-                        {service.packages.length} paket tillgängliga
-                      </div>
-                    </div>
 
                     {/* Action Button */}
                     <Button 

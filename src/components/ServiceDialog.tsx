@@ -4,15 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Clock, Shield, CheckCircle, ArrowRight, Calendar, MessageCircle } from "lucide-react";
-
-export type ServicePackage = {
-  name: string;
-  price: string;
-  duration: string;
-  features: string[];
-  popular?: boolean;
-};
+import { Star, Shield, CheckCircle, Calendar, MessageCircle } from "lucide-react";
 
 export type ServiceData = {
   icon: React.ElementType;
@@ -20,7 +12,6 @@ export type ServiceData = {
   description: string;
   detailedDescription: string;
   images: string[];
-  packages: ServicePackage[];
   processSteps: string[];
   warranty: string;
   rating: number;
@@ -110,38 +101,6 @@ const ServiceDialog = ({ service, isOpen, onClose }: ServiceDialogProps) => {
               </Carousel>
             </div>
           )}
-
-          {/* Service Packages */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Paket & Priser</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {service.packages.map((pkg, index) => (
-                <Card key={index} className={`relative ${pkg.popular ? 'border-cyan-500 bg-cyan-500/10' : 'bg-white/5 border-white/10'}`}>
-                  {pkg.popular && (
-                    <Badge className="absolute -top-2 left-4 bg-cyan-500 text-white">
-                      Populärast
-                    </Badge>
-                  )}
-                  <CardContent className="p-6">
-                    <h4 className="text-lg font-bold text-white mb-2">{pkg.name}</h4>
-                    <div className="text-2xl font-bold text-cyan-400 mb-2">{pkg.price}</div>
-                    <div className="flex items-center gap-2 text-white/60 mb-4">
-                      <Clock size={16} />
-                      <span>{pkg.duration}</span>
-                    </div>
-                    <ul className="space-y-2">
-                      {pkg.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center gap-2 text-sm text-white/80">
-                          <CheckCircle size={16} className="text-green-400 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
 
           {/* Process Steps */}
           <div>
