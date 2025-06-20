@@ -12,7 +12,6 @@ export type ServiceData = {
   description: string;
   detailedDescription: string;
   images: string[];
-  processSteps: string[];
   warranty: string;
   rating: number;
   completedJobs: number;
@@ -101,21 +100,6 @@ const ServiceDialog = ({ service, isOpen, onClose }: ServiceDialogProps) => {
               </Carousel>
             </div>
           )}
-
-          {/* Process Steps */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Vår process</h3>
-            <div className="space-y-3">
-              {service.processSteps.map((step, index) => (
-                <div key={index} className="flex items-center gap-4 p-4 bg-white/5 rounded-lg border border-white/10">
-                  <div className="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                    {index + 1}
-                  </div>
-                  <span className="text-white/80">{step}</span>
-                </div>
-              ))}
-            </div>
-          </div>
 
           {/* Materials & Highlights */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
