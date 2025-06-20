@@ -25,14 +25,6 @@ const ServicesSection = () => {
       description: "Premium vinylfoliering för att förnya din bils utseende med professionell kvalitet.",
       detailedDescription: "Vår bilfoliering är den ultimata lösningen för att ge din bil ett helt nytt utseende utan att skada originallacken. Vi använder endast högkvalitativa material från ledande tillverkare som 3M och Avery Dennison. Processen är fullständigt reversibel och skyddar samtidigt din bils lack från stenar, repor och UV-strålning.",
       images: ["/lovable-uploads/hero.jpg", "/lovable-uploads/hero2.png"],
-      processSteps: [
-        "Konsultation och designförslag",
-        "Bil förberedelse och rengöring",
-        "Precisionsmätning och mall-skapande",
-        "Professionell applicering",
-        "Kvalitetskontroll och finish",
-        "Slutlig inspektion och leverans"
-      ],
       warranty: "5-7 år",
       rating: 4.9,
       completedJobs: 450,
@@ -45,14 +37,6 @@ const ServicesSection = () => {
       description: "Omvandla blanka kromdetaljer till elegant matt eller svart finish för ett modernt utseende.",
       detailedDescription: "Chrome Delete är den perfekta tjänsten för att modernisera din bils utseende. Vi täcker alla blanka kromdetaljer med högkvalitativ vinylfolie i matt svart, satin eller andra finish. Detta ger din bil ett mer sammanhängande och modernt utseende samtidigt som de ursprungliga delarna skyddas.",
       images: ["/lovable-uploads/hero.jpg"],
-      processSteps: [
-        "Identifiering av alla kromdetaljer",
-        "Noggrann rengöring och avfettning",
-        "Precisionsskärning av material",
-        "Expertapplicering",
-        "Kantförsegling",
-        "Kvalitetskontroll"
-      ],
       warranty: "3-5 år",
       rating: 4.8,
       completedJobs: 320,
@@ -65,14 +49,6 @@ const ServicesSection = () => {
       description: "UV-skydd och värmereducering med högkvalitativ fönsterfilm för komfort och stil.",
       detailedDescription: "Vår professionella solfilm ger dig både komfort och stil. Med upp till 99% UV-skydd och betydande värmereducering förbättras både körkomforten och bilens energieffektivitet. Vi erbjuder olika tintgrader för att matcha dina preferenser och lokala regleringar.",
       images: ["/lovable-uploads/hero2.png"],
-      processSteps: [
-        "Mätning och materialval",
-        "Noggrann rutordning",
-        "Precisionsskärning",
-        "Våtapplicering",
-        "Luftborttagning",
-        "Torknings- och härdningsprocess"
-      ],
       warranty: "5-10 år",
       rating: 4.7,
       completedJobs: 280,
@@ -85,14 +61,6 @@ const ServicesSection = () => {
       description: "Osynligt skydd mot stenslag, repor och vägsmuts med självläkande teknologi.",
       detailedDescription: "Paint Protection Film (PPF) är den ultimata lösningen för att skydda din bils lack. Vår självläkande film är praktiskt taget osynlig och skyddar mot stenslag, repor, fågelspillning och andra miljöpåverkan. Filmen har självläkande egenskaper som gör att mindre repor försvinner med värme.",
       images: ["/lovable-uploads/hero.jpg", "/lovable-uploads/hero2.png"],
-      processSteps: [
-        "Detaljerad bilpreparation",
-        "Datorstyrd skärning",
-        "Professionell applicering",
-        "Kantförsegling",
-        "Härdningsprocess",
-        "Slutlig kvalitetskontroll"
-      ],
       warranty: "7-12 år",
       rating: 4.9,
       completedJobs: 180,
@@ -105,14 +73,6 @@ const ServicesSection = () => {
       description: "Anpassad toning av strålkastare för ett unikt och aggressivt utseende.",
       detailedDescription: "Vår ljustoning ger din bil en unik och aggressiv look samtidigt som ljusutgången bibehålls inom lagliga gränser. Vi använder specialfilm som tåler värme och väder. Tjänsten inkluderar både fram- och bakljus enligt dina önskemål.",
       images: ["/lovable-uploads/hero.jpg"],
-      processSteps: [
-        "Demontage av ljusenheter",
-        "Grundlig rengöring",
-        "Materialval och skärning",
-        "Precisionapplicering",
-        "Monterig och test",
-        "Ljuskontroll"
-      ],
       warranty: "2-5 år",
       rating: 4.6,
       completedJobs: 220,
@@ -125,14 +85,6 @@ const ServicesSection = () => {
       description: "Skräddarsydda designlösningar för att framhäva din bils unika karaktär.",
       detailedDescription: "Vårt stylingteam skapar skräddarsydda lösningar för att göra din bil helt unik. Från subtila accenter till dramatiska transformationer - vi arbetar med dig för att skapa något som verkligen speglar din personlighet och stil.",
       images: ["/lovable-uploads/hero2.png"],
-      processSteps: [
-        "Designkonsultation",
-        "Konceptutveckling",
-        "Materialval",
-        "Prototyping",
-        "Implementering",
-        "Finalizing och leverans"
-      ],
       warranty: "3-7 år",
       rating: 4.8,
       completedJobs: 95,
